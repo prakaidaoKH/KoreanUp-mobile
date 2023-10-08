@@ -1,0 +1,90 @@
+<ion-content>
+  <ion-header collapse="condense">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krub:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </ion-header>
+  <style>
+    .text-center {
+      text-align: center;
+    }
+  </style>
+  <div class="text-center">
+    <br />
+    <ion-label style="color: #683815; font-family: 'Krub', sans-serif"
+      >โปรไฟล์
+    </ion-label>
+  </div>
+  <br />
+
+  <div class="text-center">
+    <ion-avatar
+      *ngIf="memberLogin.profilePicture !==''"
+      style="margin-bottom: 10px"
+    >
+      <ion-img [src]="memberLogin.profilePicture"></ion-img>
+    </ion-avatar>
+
+    <ion-button
+      *ngIf="memberLogin.type !=='google'"
+      fill="clear"
+      style="color: #684018; font-family: 'Krub', sans-serif"
+      (click)="onClickEditProfile()"
+      >แก้ไขโปรไฟล์</ion-button
+    >
+  </div>
+  <ion-list>
+    <ion-item lines="none">
+      <a style="color: black">ชื่อผู้ใช้งาน:&nbsp; </a>
+      <a style="color: #d49923">{{memberLogin.Username}}</a>
+    </ion-item>
+
+    <ion-item lines="none">
+      <a style="color: black">อีเมล:&nbsp; </a>
+      <a style="color: #d49923">{{memberLogin.Email}}</a>
+    </ion-item>
+  </ion-list>
+  <div class="text-center" *ngIf="!statusP">
+    <ion-card [routerLink]="['/pre-apply']">
+      <ion-card-header>
+        <ion-card-title>สมัครสมาชิกพรีเมียม</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+  <div class="text-center" *ngIf="statusP && !end_date">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{statusP}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+  <div
+    class="text-center"
+    *ngIf="statusP && end_date && start_date !== end_date"
+  >
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{statusP}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <a style="color: black; font-size: 15px">เหลือเวลาอีก: </a>
+        {{premiumDays}}
+        <a style="color: black; font-size: 15px"> วัน</a>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="text-center">
+    <ion-button
+      expand="block"
+      fill="clear"
+      style="color: #684018; font-family: 'Krub', sans-serif"
+      class="s"
+      (click)="onClickLogoutButton()"
+      >ออกจากระบบ</ion-button
+    >
+  </div>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-header collapse="condense">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krub:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </ion-header>
+  <ion-row *ngFor="let m of myCourses">
+    <ion-col>
+      <ion-card>
+        <ion-img [src]="m.coursePicture"></ion-img>
+        <ion-card-header>
+          <ion-card-title>{{m.courseName}}</ion-card-title>
+        </ion-card-header>
+        <ion-item lines="none">
+          <b>สถานะการเรียน</b>
+          <ion-button slot="end" (click)="onClickLearn(m.courseID)"
+            >เรียน</ion-button
+          >
+        </ion-item>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="myCourses.length === 0">
+    <ion-col>
+      <div id="center">
+        <a>ไม่มีบทเรียน</a>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>

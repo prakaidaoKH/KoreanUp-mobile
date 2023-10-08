@@ -1,0 +1,96 @@
+$text-1: #c09a53;
+.center {
+  text-align: center;
+}
+#detail {
+  font-family: "Krub", sans-serif;
+  font-size: 16px;
+  color: #4c4b49;
+}
+.position {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+label {
+  font-family: "Krub", sans-serif;
+}
+#BD {
+  border: 1.5px solid #d7c3a0;
+  border-radius: 12px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  font-family: "Krub", sans-serif !important;
+}
+
+.disabled {
+  color: #767674;
+}
+
+a {
+  font-family: "Krub", sans-serif !important;
+}
+#PS {
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  margin-right: 10px;
+}
+#block {
+  border: 1.5px solid #d7c3a0;
+  border-radius: 12px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 300px;
+}
+ion-input {
+  margin-left: 10px;
+  font-family: "Krub", sans-serif !important;
+}
+
+// .message {
+//   box-sizing: border-box;
+//   padding: 0.5rem 1rem;
+//   margin: 1rem;
+//   background: #fff;
+//   border-radius: 1.125rem 1.125rem 1.125rem 0;
+//   min-height: 2.25rem;
+//   width: fit-content;
+//   max-width: 66%;
+//   box-shadow: 0 0 2rem rgba(black, 0.075), 0rem 1rem 1rem -1rem rgba(black, 0.1);
+// }
+
+.message {
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  background: #ffeac2;
+  border-radius: 1.125rem 1.125rem 1.125rem 0;
+
+  width: fit-content;
+  max-width: 100%;
+  box-shadow: 0 0 2rem rgba(black, 0.075), 0rem 1rem 1rem -1rem rgba(black, 0.1);
+}
+#parker {
+  margin: 1rem 1rem 1rem auto;
+  border-radius: 1.125rem 1.125rem 0 1.125rem;
+  background: $text-1;
+  color: #ffffff;
+}
+.messageAD {
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  background: #ffffff;
+  border-radius: 1.125rem 1.125rem 1.125rem 0;
+
+  width: fit-content;
+  max-width: 100%;
+  box-shadow: 0 0 2rem rgba(black, 0.075), 0rem 1rem 1rem -1rem rgba(black, 0.1);
+}
+#time {
+  color: #afafaf;
+  font-size: 14px;
+  font-family: "Krub", sans-serif !important;
+}

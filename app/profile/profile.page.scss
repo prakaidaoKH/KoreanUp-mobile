@@ -1,0 +1,32 @@
+.cardPremuim {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+ion-card {
+  display: flex;
+  flex-direction: column;
+  width: 70% !important;
+  margin-left: 55px !important;
+  background-color: #fcecda;
+}
+ion-card-title {
+  font-size: 18px;
+  color: #683815;
+  font-family: "Krub", sans-serif;
+}
+a {
+  font-family: "Krub", sans-serif;
+}
+p {
+  font-family: "Krub", sans-serif;
+}
+ion-avatar {
+  margin: auto;
+  width: 100px !important;
+  height: 100px !important;
+}
+
+ion-item {
+  font-family: "Krub", sans-serif;
+  --border-radius: 50px;
+}

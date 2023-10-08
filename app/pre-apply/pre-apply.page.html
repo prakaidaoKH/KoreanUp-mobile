@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Krub:wght@500&display=swap"
+    rel="stylesheet"
+  />
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item lines="none">
+    <ion-icon
+      slot="start"
+      name="chevron-back-outline"
+      [routerLink]="['/tabs/profile']"
+    ></ion-icon>
+    <ion-label id="label-name" class="center">สมัครสมาชิกพรีเมียม</ion-label>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <div>
+        <div class="tex-radio">
+          <ion-radio-group
+            [(ngModel)]="promotion_radio"
+            *ngFor="let pro of promotions"
+            value="end"
+          >
+            <div id="BD">
+              <ion-item lines="none" style="border-radius: 12px">
+                <ion-radio value="{{pro.promotionID}}" labelPlacement="end">
+                </ion-radio>
+                <ion-label>{{pro.month}} เดือน</ion-label>
+                <ion-label slot="end">{{pro.price}} บาท</ion-label></ion-item
+              >
+            </div>
+          </ion-radio-group>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col>
+      <div class="center">
+        <ion-button expand="block" (click)="onClickButton()">
+          สมัครสมาชิกพรีเมียม
+        </ion-button>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-footer>
