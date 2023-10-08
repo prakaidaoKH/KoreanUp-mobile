@@ -1,0 +1,50 @@
+<ion-header>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Krub:wght@500&display=swap"
+    rel="stylesheet"
+  />
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-icon
+      slot="start"
+      name="chevron-back-outline"
+      [routerLink]="['/tabs/fristpage']"
+    ></ion-icon>
+    <ion-label id="label-name" class="center">
+      {{course.courseName}}
+    </ion-label>
+  </ion-item>
+  <ion-list>
+    <div class="center">
+      <img [src]="course.coursePicture" />
+    </div>
+    <div class="position">
+      <ion-label> รายละเอียดบทเรียน </ion-label>
+      <div class="position">
+        <ion-label id="detail">{{course.courseDetail}}</ion-label>
+      </div>
+    </div>
+    <div class="center" *ngIf="member.status">
+      <ion-button (click)="addCourse(course.courseID,member.MemberID)">
+        เพิ่มในบทเรียนของฉัน
+      </ion-button>
+    </div>
+    <div class="center" *ngIf="!member.status && course.courseType === 'ฟรี'">
+      <ion-button (click)="addCourse(course.courseID,member.MemberID)">
+        เพิ่มในบทเรียนของฉัน
+      </ion-button>
+    </div>
+    <div
+      class="center"
+      *ngIf="!member.status && course.courseType === 'พรีเมียม'"
+    >
+      <ion-button (click)="presentAlert()"
+        ><ion-icon name="lock-closed-outline"></ion-icon> เฉพาะสมาชิกพรีเมียม
+      </ion-button>
+    </div>
+  </ion-list>
+</ion-content>
