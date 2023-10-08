@@ -1,0 +1,23 @@
+ion-button {
+  font-family: "Krub", sans-serif;
+  --border-radius: 50px;
+}
+swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+img {
+  width: 260px;
+  height: 260px;
+}
+label {
+  font-family: "Krub", sans-serif;
+}
+.center {
+  text-align: center;
+}
+ion-label {
+  font-family: "Krub", sans-serif;
+}

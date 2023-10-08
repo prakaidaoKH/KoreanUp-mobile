@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-header collapse="condense">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krub:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </ion-header>
+  <ion-list>
+    <ion-chip color="medium" routerLink="/tabs">
+      <ion-avatar>
+        <ion-img [src]="member.profilePicture"></ion-img>
+      </ion-avatar>
+      <ion-label style="margin-left: 10px"> {{member.Username}} </ion-label>
+    </ion-chip>
+    <ion-row *ngFor="let showCourse of courses">
+      <ion-col>
+        <ion-card>
+          <ion-img [src]="showCourse.coursePicture"></ion-img>
+          <ion-card-header>
+            <ion-card-title>{{showCourse.courseName}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-item lines="none">
+            <b>{{showCourse.courseType}}</b>
+            <ion-button slot="end" (click)="goTo(showCourse.courseID)"
+              >ดูบทเรียน</ion-button
+            ></ion-item
+          >
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>

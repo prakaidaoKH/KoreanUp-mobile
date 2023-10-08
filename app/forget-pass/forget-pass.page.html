@@ -1,0 +1,60 @@
+<ion-header>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Krub:wght@500&display=swap"
+    rel="stylesheet"
+  />
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item lines="none">
+    <ion-icon
+      slot="start"
+      name="chevron-back-outline"
+      [routerLink]="['/login']"
+    ></ion-icon>
+    <ion-label id="label-name" class="center"> ค้นหาบัญชีของคุณ </ion-label>
+  </ion-item>
+  <form>
+    <ion-row style="margin-top: 10px">
+      <ion-col></ion-col>
+      <ion-col size="auto">
+        <ion-label id="label"> ป้อนอีเมลของคุณ </ion-label></ion-col
+      >
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-col size="12" class="ion-margin-bottom">
+      <!-- <ion-item lines="none" mode="md" fill="outline" class="s"> -->
+      <div id="block">
+        <ion-input
+          name="email"
+          [(ngModel)]="member.Email"
+          type="text"
+          placeholder="อีเมล "
+        ></ion-input>
+      </div>
+
+      <div class="center position">
+        <ion-button
+          type="submit"
+          expand="block"
+          style="color: #ffffff"
+          class="s"
+          (click)="fineAccountByEmail(member.Email)"
+          >ค้นหาบัญชี</ion-button
+        ><br />
+      </div>
+    </ion-col>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-button
+    expand="block"
+    fill="clear"
+    style="color: #7a7a7a; font-family: 'Krub', sans-serif"
+    class="s"
+    [routerLink]="['/fine-by-username']"
+    >ค้นหาด้วยชื่อผู้ใช้ของคุณแทน</ion-button
+  >
+</ion-footer>

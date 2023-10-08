@@ -1,0 +1,46 @@
+#label-name {
+  font-family: "Krub", sans-serif;
+  font-size: 20px;
+}
+#label {
+  font-family: "Krub", sans-serif;
+  font-size: 16px;
+}
+.center {
+  text-align: center;
+}
+.position {
+  margin-top: 40px;
+}
+.s {
+  margin-right: 30px;
+  margin-left: 30px;
+}
+.buttong {
+  background-color: #d3d3d3;
+}
+ion-button {
+  font-family: "Krub", sans-serif;
+  --border-radius: 50px;
+}
+ion-item {
+  --border-radius: 50px;
+}
+#block {
+  border: 1.5px solid #d7c3a0;
+  border-radius: 12px;
+  margin-left: 40px;
+  margin-top: 10px;
+  width: 300px;
+}
+ion-input {
+  width: 280px;
+  margin-left: 10px;
+  font-family: "Krub", sans-serif !important;
+}
+ion-text {
+  margin-right: 30px;
+  margin-left: 25px;
+  font-family: "Krub", sans-serif;
+  font-size: 16px;
+}

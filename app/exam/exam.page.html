@@ -1,0 +1,103 @@
+<ion-header
+  ><link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Krub:wght@500&display=swap"
+    rel="stylesheet"
+  />
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col>
+      <ion-icon
+        name="chevron-back-outline"
+        (click)="backToPagePrev()"
+      ></ion-icon>
+    </ion-col>
+    <ion-col size="auto">
+      <label style="font-size: 18px"> แบบทดสอบ </label>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  <br />
+  <ion-row>
+    <ion-col>
+      <swiper-container #swiper>
+        <swiper-slide *ngFor="let ex of exams; let i = index">
+          <ion-list>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col size="auto">
+                <ion-label style="font-size: 14px; color: #131313b4"
+                  >ข้อที่ {{i+1}}/10</ion-label
+                >
+              </ion-col>
+              <ion-col></ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col size="auto"
+                ><ion-label>{{ex.question}}</ion-label></ion-col
+              >
+              <ion-col></ion-col>
+            </ion-row>
+            <ion-row style="margin-top: 10px">
+              <ion-col> </ion-col>
+              <ion-col size="auto">
+                <img [src]="ex.qPicUrl" />
+              </ion-col>
+              <ion-col> </ion-col>
+            </ion-row>
+            <ion-row style="margin-top: 10px">
+              <ion-radio-group (ionChange)="selectedChoice($event, i)">
+                <ion-radio value="{{ex.choice_1}}">
+                  1. {{ex.choice_1}} </ion-radio
+                ><br />
+                <ion-radio value="{{ex.choice_2}}">
+                  2. {{ex.choice_2}} </ion-radio
+                ><br />
+                <ion-radio value="{{ex.choice_3}}">
+                  3. {{ex.choice_3}}
+                </ion-radio>
+              </ion-radio-group>
+            </ion-row>
+          </ion-list>
+        </swiper-slide>
+      </swiper-container>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col size="6">
+      <div class="center">
+        <ion-button expand="block" (click)="prev()"
+          ><ion-icon name="caret-back-outline"></ion-icon>
+
+          ข้อก่อนหน้า
+        </ion-button>
+      </div>
+    </ion-col>
+    <ion-col size="6">
+      <div class="center">
+        <ion-button expand="block" (click)="next()">
+          ข้อถัดไป<ion-icon name="caret-forward-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <div class="center">
+        <ion-button
+          disabled="{{isDisableSendAnswer}}"
+          expand="block"
+          (click)="onClickButton()"
+        >
+          ส่ง
+        </ion-button>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-footer>

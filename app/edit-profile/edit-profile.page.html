@@ -1,0 +1,73 @@
+<ion-header>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Krub:wght@500&display=swap"
+    rel="stylesheet"
+/></ion-header>
+<ion-content>
+  <div class="text-center">
+    <br />
+    <ion-label style="color: #683815; font-family: 'Krub', sans-serif"
+      >แก้ไขโปรไฟล์
+    </ion-label>
+  </div>
+  <ion-col
+    size="12"
+    class="ion-margin-bottom"
+    style="font-family: 'Krub', sans-serif"
+  >
+    <ion-list>
+      <div class="text-center">
+        <ion-avatar *ngIf="member.profilePicture !==''; else profilePic">
+          <ion-img [src]="member.profilePicture"></ion-img>
+        </ion-avatar>
+
+        <ng-template #profilePic>
+          <ion-avatar>
+            <img src="../assets/pic/defProfile.jpg" />
+          </ion-avatar>
+        </ng-template>
+      </div>
+      <div class="text-center">
+        <ion-button
+          fill="clear"
+          style="color: #684018; font-family: 'Krub', sans-serif"
+          (click)="selectImage()"
+          >เลือกรูป
+          <ion-icon slot="start" name="camera">Select Image</ion-icon>
+        </ion-button>
+      </div>
+      <ion-item>
+        <ion-label> ชื่อผู้ใช้งาน: </ion-label>
+        <ion-input
+          [(ngModel)]="member.Username"
+          style="font-family: 'Krub', sans-serif"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label> อีเมล: </ion-label>
+        <ion-input
+          type="Email"
+          [(ngModel)]="member.Email"
+          style="font-family: 'Krub', sans-serif"
+        ></ion-input>
+      </ion-item>
+    </ion-list>
+    <br />
+    <div class="text-center">
+      <ion-button
+        color="warning"
+        style="color: #684018; font-family: 'Krub', sans-serif"
+        (click)="onClickSaveButton()"
+        >บันทึกข้อมูล</ion-button
+      >
+      <ion-button
+        color="danger"
+        style="color: #684018; font-family: 'Krub', sans-serif"
+        (click)="onClickCancelButton()"
+        >ยกเลิก</ion-button
+      >
+    </div>
+  </ion-col>
+</ion-content>

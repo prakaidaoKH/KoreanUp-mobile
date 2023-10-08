@@ -1,0 +1,26 @@
+.text-center {
+  text-align: center;
+}
+ion-button{
+  font-family: 'Krub', sans-serif;
+  --border-radius: 50px
+}
+ion-label{
+  font-family: 'Krub', sans-serif !important;
+}
+ion-item{
+  font-family: 'Krub', sans-serif;
+  --border-radius: 50px
+}
+// ion-input{
+// border: 1.5px solid #d7c3a0;
+// border-radius: 12px;
+// margin-left: 30px;
+// margin-top: 10px;
+// width: 300px;
+// }
+ion-avatar{
+  margin: auto;
+  width: 120px !important;
+height : 120px !important
+}
