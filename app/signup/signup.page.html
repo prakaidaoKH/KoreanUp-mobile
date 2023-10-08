@@ -1,0 +1,127 @@
+<ion-content>
+  <ion-header collapse="condense">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krub:wght@500&display=swap"
+      rel="stylesheet"
+  /></ion-header>
+  <ion-item lines="none">
+    <ion-icon name="chevron-back-sharp" (click)="onClickback()"></ion-icon>
+  </ion-item>
+
+  <br />
+
+  <style>
+    .text-center {
+      text-align: center;
+    }
+  </style>
+  <div class="text-center">
+    <img src="./assets/pic/p2.png " height="200" width="200" />
+    <br />
+    <ion-label style="font-family: 'Krub', sans-serif">สมัครสมาชิก</ion-label>
+    <br />
+    <ion-label
+      style="font-family: 'Krub', sans-serif; color: #9b9b9b; font-size: 10px"
+    >
+      สร้างบัญชีของคุณ
+    </ion-label>
+  </div>
+  <form [formGroup]="singupForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-col size="12" class="ion-margin-bottom">
+      <div id="block">
+        <ion-input
+          formControlName="email"
+          [(ngModel)]="member.Email"
+          type="emil"
+          placeholder="อีเมล"
+          style="font-family: 'Krub', sans-serif"
+        ></ion-input>
+      </div>
+
+      <div
+        *ngIf="this.singupForm.controls?.email.touched && this.singupForm.controls?.email.invalid"
+      >
+        <div
+          class="error ion-padding"
+          *ngIf="errorControl.email.errors?.required"
+        >
+          <ion-text color="danger">กรุณากรอกอีเมล</ion-text>
+        </div>
+        <div class="ion-padding" *ngIf="errorControl.email.errors?.pattern">
+          <ion-text color="danger">อีเมลไม่ถูกต้อง</ion-text>
+        </div>
+      </div>
+
+      <div id="block">
+        <ion-input
+          formControlName="username"
+          [(ngModel)]="member.Username"
+          type="text"
+          placeholder="ชื่อผู้ใช้งาน"
+          style="font-family: 'Krub', sans-serif"
+        ></ion-input>
+      </div>
+
+      <div
+        *ngIf="this.singupForm.controls?.username.touched && this.singupForm.controls?.username.invalid"
+      >
+        <div
+          class="error ion-padding"
+          *ngIf="errorControl.username.errors?.required"
+        >
+          <ion-text color="danger">กรุณากรอกชื่อผู้ใช้</ion-text>
+        </div>
+        <div class="ion-padding" *ngIf="errorControl.username.errors?.pattern">
+          <ion-text color="danger">ชื่อผู้ใช้ไม่ถูกต้อง</ion-text>
+        </div>
+      </div>
+
+      <div id="block">
+        <ion-input
+          formControlName="password"
+          [(ngModel)]="member.Password"
+          type="Password"
+          placeholder="รหัสผ่าน"
+          style="font-family: 'Krub', sans-serif"
+        ></ion-input>
+      </div>
+
+      <div
+        *ngIf="this.singupForm.controls?.password.touched && this.singupForm.controls?.password.invalid"
+      >
+        <div
+          class="error ion-padding"
+          *ngIf="errorControl.password.errors?.required"
+        >
+          <ion-text color="danger">กรุณากรอกรหัสผ่าน</ion-text>
+        </div>
+        <div class="ion-padding" *ngIf="errorControl.password.errors?.pattern">
+          <ion-text color="danger">รหัสผ่านไม่ถูกต้อง</ion-text>
+        </div>
+      </div>
+
+      <br />
+      <div class="text-center">
+        <ion-button
+          id="present-alert"
+          type="submit"
+          expand="block"
+          (click)="onClickSignUpButton(member)"
+          class="s"
+        >
+          สมัครสมาชิก
+        </ion-button>
+        <ion-button
+          expand="block"
+          fill="clear"
+          style="color: #684018"
+          class="s"
+          routerLink="/login/"
+          >เข้าสู่ระบบ</ion-button
+        >
+      </div>
+    </ion-col>
+  </form>
+</ion-content>
