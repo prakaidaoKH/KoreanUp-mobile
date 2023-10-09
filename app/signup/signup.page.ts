@@ -85,22 +85,6 @@ export class SignupPage implements OnInit {
   };
 
   async onClickSignUpButton(member: Member) {
-    this.memberService.forgetPassByEmail(member.Email).subscribe((response) => {
-      if (response.status !== 'success') {
-        return;
-      }
-      this.memberCheckEmail = response.member;
-    });
-
-    this.memberService
-      .forgetPassByUsername(member.Username)
-      .subscribe((response) => {
-        if (response.status !== 'success') {
-          return;
-        }
-        this.memberCheckUsername = response.member;
-      });
-
     if (this.member.Email === '') {
       const alert = await this.alertController.create({
         header: 'กรุณากรอกอีเมลของคุณ',
@@ -128,26 +112,87 @@ export class SignupPage implements OnInit {
       await alert.present();
       return;
     }
-    this.memberService.addMember(member).subscribe(async (response) => {
-      if (response.status !== 'success') {
-        const alert = await this.alertController.create({
-          header: 'สมัครสมาชิกไม่สำเร็จ',
-          message: 'ไม่สามารถสมัครสมาชิกได้! กรุณาตรวจสอบข้อมูลให้ถูกต้อง',
-          buttons: ['ตกลง'],
-        });
-        await alert.present();
-        return;
-      }
-      const alert = await this.alertController.create({
-        header: 'สมัครสมาชิกสำเร็จ',
-        message:
-          'การสมัครสมาชิกของคุณสำเร็จแล้ว! กรุณาทำการเข้าสู่ระบบใหม่อีกครั้ง',
-        buttons: ['ตกลง'],
+
+    this.memberService
+      .forgetPassByEmail(member.Email)
+      .subscribe(async (response) => {
+        if (response.status !== 'success') {
+          return;
+        }
+        this.memberCheckEmail = response.member;
+
+        this.memberService
+          .forgetPassByUsername(member.Username)
+          .subscribe(async (response) => {
+            if (response.status !== 'success') {
+              return;
+            }
+            this.memberCheckUsername = response.member;
+            //Check username not null in database
+            if (
+              this.memberCheckEmail !== null &&
+              this.member.Email === this.memberCheckEmail.Email
+            ) {
+              const alert = await this.alertController.create({
+                header: 'มีบัญชีนี้อยู่แล้ว',
+                message: 'ต้องการเข้าสู่ระบบด้วยอีเมลนี้ ใช่ หรือ ไม่',
+
+                buttons: [
+                  {
+                    text: 'ไม่',
+                    role: 'cancel',
+                    handler: () => {},
+                  },
+                  {
+                    text: 'ใช่',
+                    role: 'confirm',
+                    handler: async () => {
+                      this.router.navigate(['/login']);
+                    },
+                  },
+                ],
+              });
+              await alert.present();
+              return;
+            } else if (
+              this.memberCheckUsername !== null &&
+              this.member.Username === this.memberCheckUsername.Username
+            ) {
+              //Check email not null in database
+              const alert = await this.alertController.create({
+                header: 'มีชื่อผู้ใช้งานนี้อยู่แล้ว',
+                message: 'กรุณาใช้ชื่อผู้ใช้อื่น',
+                buttons: ['ตกลง'],
+              });
+              await alert.present();
+              return;
+            } else {
+              this.memberService
+                .addMember(member)
+                .subscribe(async (response) => {
+                  if (response.status !== 'success') {
+                    const alert = await this.alertController.create({
+                      header: 'สมัครสมาชิกไม่สำเร็จ',
+                      message:
+                        'ไม่สามารถสมัครสมาชิกได้! กรุณาตรวจสอบข้อมูลให้ถูกต้อง',
+                      buttons: ['ตกลง'],
+                    });
+                    await alert.present();
+                    return;
+                  }
+                  const alert = await this.alertController.create({
+                    header: 'สมัครสมาชิกสำเร็จ',
+                    message:
+                      'การสมัครสมาชิกของคุณสำเร็จแล้ว! กรุณาทำการเข้าสู่ระบบใหม่อีกครั้ง',
+                    buttons: ['ตกลง'],
+                  });
+                  await alert.present();
+                  this.router.navigate(['/login']);
+                  this.resetForm();
+                });
+            }
+          });
       });
-      await alert.present();
-      this.router.navigate(['/home']);
-      this.resetForm();
-    });
   }
   onClickback() {
     // window.location.reload();
