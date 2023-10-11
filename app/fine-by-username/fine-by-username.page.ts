@@ -3,6 +3,7 @@ import { MemberService } from '../services/member.service';
 import { Member } from '../models/member-model';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-fine-by-username',
@@ -23,7 +24,8 @@ export class FineByUsernamePage implements OnInit {
   constructor(
     private memberService: MemberService,
     private router: Router,
-    private storage: Storage
+    private storage: Storage,
+    private alert: AlertController
   ) {}
 
   async ngOnInit() {
@@ -34,6 +36,23 @@ export class FineByUsernamePage implements OnInit {
       .forgetPassByUsername(username)
       .subscribe(async (response) => {
         if (response.status !== 'success') {
+          return;
+        }
+        if (response.member === null) {
+          const alert = await this.alert.create({
+            header: 'ไม่พบบัญชี',
+            subHeader: '',
+            message: 'ไม่มีบัญชีจากชื่อผู้ใช้นี้',
+            buttons: [
+              {
+                text: 'ตกลง',
+                role: 'confirm',
+                handler: () => {},
+              },
+            ],
+          });
+
+          await alert.present();
           return;
         }
         this.member = response.member;
