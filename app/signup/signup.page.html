@@ -110,6 +110,7 @@
           expand="block"
           (click)="onClickSignUpButton(member)"
           class="s"
+          [disabled]="!singupForm.valid"
         >
           สมัครสมาชิก
         </ion-button>
