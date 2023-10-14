@@ -88,6 +88,7 @@
           expand="block"
           (click)="onClickLoginButton()"
           class="s"
+          [disabled]="!loginForm.valid"
         >
           เข้าสู่ระบบ
         </ion-button>
